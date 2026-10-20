@@ -1,0 +1,57 @@
+{
+  "name": "船员申报",
+  "description": "船员数量及上下船记录。已按KHFW.BT_CHBSD元数据核验所列字段、基本类型和主键；一行粒度及与主表关联方式仍待业务确认。",
+  "fields": {
+    "ID": {
+      "description": "船员申报记录主键。从达梦元数据确认的本表记录主键；与其他表同名ID不代表存在关联。",
+      "entity_id": "crew_declaration",
+      "property_id": "record_id",
+      "semantic_type": "identifier",
+      "semantic_role": "identifier",
+      "synonyms": [
+        "船员申报主键"
+      ]
+    },
+    "CHYSHL": {
+      "description": "船员总数量。船员总数量；统计时点与申报粒度待确认。",
+      "entity_id": "crew_declaration",
+      "property_id": "total_crew_count",
+      "semantic_type": "integer",
+      "semantic_role": "measure",
+      "synonyms": [
+        "船员人数"
+      ]
+    },
+    "SHFGHCHY": {
+      "description": "是否更换船员。是否更换船员；真实枚举编码待确认。",
+      "entity_id": "crew_declaration",
+      "property_id": "crew_changed",
+      "semantic_type": "boolean",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "是否换班"
+      ]
+    },
+    "SHCHRSH": {
+      "description": "上船人数。本记录上船人数；所属航次关联待确认。",
+      "entity_id": "crew_declaration",
+      "property_id": "boarding_count",
+      "semantic_type": "integer",
+      "semantic_role": "measure",
+      "synonyms": [
+        "上船人数"
+      ]
+    },
+    "XCHRSH": {
+      "description": "下船人数。本记录下船人数；所属航次关联待确认。",
+      "entity_id": "crew_declaration",
+      "property_id": "disembarking_count",
+      "semantic_type": "integer",
+      "semantic_role": "measure",
+      "synonyms": [
+        "下船人数"
+      ]
+    }
+  },
+  "entity_id": "crew_declaration"
+}

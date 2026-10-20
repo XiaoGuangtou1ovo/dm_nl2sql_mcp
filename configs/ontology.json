@@ -1,0 +1,119 @@
+{
+  "entities": [
+    {
+      "id": "ship",
+      "name": "船舶",
+      "description": "航次申报中描述的船舶业务身份。船舶静态资料与航次记录是否拆表脱敏仍未确认。",
+      "aliases": [
+        "船",
+        "船舶资料",
+        "船名"
+      ],
+      "status": "pending",
+      "grain": "一艘船舶的业务身份；当前表可能因航次产生重复"
+    },
+    {
+      "id": "voyage_declaration",
+      "name": "航次申报",
+      "description": "船舶与航次申报业务记录。一行是否对应一个航次仍需业务确认。",
+      "aliases": [
+        "航次",
+        "申报",
+        "进出港申报"
+      ],
+      "status": "pending",
+      "grain": "一次航次申报；当前物理主键是申报记录ID"
+    },
+    {
+      "id": "crew_declaration",
+      "name": "船员申报",
+      "description": "记录船员总数、更换人员及上下船人数。与航次的关联尚未核验。",
+      "aliases": [
+        "船员",
+        "上下船",
+        "换班"
+      ],
+      "status": "pending",
+      "grain": "一条船员申报记录"
+    },
+    {
+      "id": "cargo_manifest_item",
+      "name": "舱单货物明细",
+      "description": "货种、货主、提单和配载相关的舱单货物明细。与航次的关联尚未核验。",
+      "aliases": [
+        "货物",
+        "货种",
+        "舱单",
+        "提单"
+      ],
+      "status": "pending",
+      "grain": "一条舱单货物或配载明细；去重口径待确认"
+    },
+    {
+      "id": "port",
+      "name": "港口",
+      "description": "港口业务概念。当前未选择港口字典表，代码含义和真实关联路径待确认。",
+      "aliases": [
+        "港口",
+        "码头",
+        "挂靠港",
+        "上一港",
+        "下一港"
+      ],
+      "status": "pending",
+      "grain": "一个港口或港口代码"
+    }
+  ],
+  "relations": [
+    {
+      "id": "voyage_reported_for_ship",
+      "source_entity": "voyage_declaration",
+      "target_entity": "ship",
+      "predicate": "reported_for_ship",
+      "cardinality": "many_to_one",
+      "description": "航次申报描述一艘船舶。真实关联字段与航次粒度待确认。",
+      "status": "pending",
+      "path": null
+    },
+    {
+      "id": "voyage_has_crew_declaration",
+      "source_entity": "voyage_declaration",
+      "target_entity": "crew_declaration",
+      "predicate": "has_crew_declaration",
+      "cardinality": "one_to_many",
+      "description": "航次与船员申报在业务上相关，真实外键和目标主键路径待确认。",
+      "status": "pending",
+      "path": null
+    },
+    {
+      "id": "voyage_has_cargo_manifest_item",
+      "source_entity": "voyage_declaration",
+      "target_entity": "cargo_manifest_item",
+      "predicate": "has_cargo_manifest_item",
+      "cardinality": "one_to_many",
+      "description": "航次与舱单货物明细在业务上相关，真实外键和目标主键路径待确认。",
+      "status": "pending",
+      "path": null
+    },
+    {
+      "id": "voyage_departs_from_port",
+      "source_entity": "voyage_declaration",
+      "target_entity": "port",
+      "predicate": "departs_from",
+      "cardinality": "many_to_one",
+      "description": "航次涉及出发或上一港，进口和出口字段适用条件及港口字典待确认。",
+      "status": "pending",
+      "path": null
+    },
+    {
+      "id": "voyage_arrives_at_port",
+      "source_entity": "voyage_declaration",
+      "target_entity": "port",
+      "predicate": "arrives_at",
+      "cardinality": "many_to_one",
+      "description": "航次涉及到达或下一港，计划与实际时间及港口字典待确认。",
+      "status": "pending",
+      "path": null
+    }
+  ]
+}

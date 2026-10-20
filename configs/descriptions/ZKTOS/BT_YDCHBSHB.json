@@ -1,0 +1,509 @@
+{
+  "name": "船舶与航次申报",
+  "description": "保存船舶资料、航次申报和装卸计划相关字段。已按导出的ZKTOS.BT_YDCHBSHB元数据核对所列字段、基本类型与主键；不能视为独立船舶主档。一行是否为一次申报或一个航次待确认。",
+  "fields": {
+    "ID": {
+      "description": "申报记录主键。从达梦元数据确认的记录主键；不是船舶唯一标识，也不据此认定一行等于一个航次。",
+      "entity_id": "voyage_declaration",
+      "property_id": "record_id",
+      "semantic_type": "identifier",
+      "semantic_role": "identifier",
+      "synonyms": [
+        "申报记录主键"
+      ]
+    },
+    "CHBHH": {
+      "description": "呼号。船舶呼号；不能据此认定为记录主键。",
+      "entity_id": "ship",
+      "property_id": "call_sign",
+      "semantic_type": "code",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "呼号"
+      ]
+    },
+    "ZHWCHM": {
+      "description": "中文船名。船舶中文名称。",
+      "entity_id": "ship",
+      "property_id": "name_zh",
+      "semantic_type": "name",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "船名",
+        "中文船名"
+      ]
+    },
+    "YWCHM": {
+      "description": "英文船名。船舶英文名称。",
+      "entity_id": "ship",
+      "property_id": "name_en",
+      "semantic_type": "name",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "船名",
+        "英文船名"
+      ]
+    },
+    "IMO": {
+      "description": "IMO号。船舶IMO标识；未确认非空和唯一约束，不作为记录主键。",
+      "entity_id": "ship",
+      "property_id": "imo_number",
+      "semantic_type": "identifier",
+      "semantic_role": "identifier",
+      "synonyms": [
+        "IMO",
+        "国际海事组织编号"
+      ]
+    },
+    "MMSI": {
+      "description": "MMSI。船舶MMSI标识；同一船舶可能出现多条航次记录，不作为记录主键。",
+      "entity_id": "ship",
+      "property_id": "mmsi",
+      "semantic_type": "identifier",
+      "semantic_role": "descriptive",
+      "synonyms": [
+        "海上移动通信识别码"
+      ]
+    },
+    "HC": {
+      "description": "航次。航次标识；唯一范围和与船舶标识的组合关系待确认，不直接作为主键。",
+      "entity_id": "voyage_declaration",
+      "property_id": "voyage_number",
+      "semantic_type": "identifier",
+      "semantic_role": "identifier",
+      "synonyms": [
+        "航次号",
+        "航次"
+      ]
+    },
+    "YDSHJ": {
+      "description": "预抵时间。预到或预计抵港时间；不能用于回答实际到港记录。默认最近几天的时间口径尚未确认。",
+      "entity_id": "voyage_declaration",
+      "property_id": "planned_arrival_at",
+      "semantic_type": "datetime",
+      "semantic_role": "planned_time",
+      "synonyms": [
+        "预到",
+        "预计到港",
+        "ETA"
+      ]
+    },
+    "GJDM": {
+      "description": "国籍代码。船舶国籍代码；国家字典映射和编码待确认。",
+      "entity_id": "ship",
+      "property_id": "country_code",
+      "semantic_type": "code",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "国籍",
+        "船籍国"
+      ]
+    },
+    "CHBJYR": {
+      "description": "船舶经营人。页面称船公司，原描述为船舶经营人；是否为代码以及对应字典待确认。",
+      "entity_id": "ship",
+      "property_id": "operator_name",
+      "semantic_type": "name",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "船公司",
+        "经营人"
+      ]
+    },
+    "JZSJ": {
+      "description": "建造时间。船舶建造时间；不是到港时间或申报时间。",
+      "entity_id": "ship",
+      "property_id": "built_at",
+      "semantic_type": "datetime",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "建造日期",
+        "建成时间"
+      ]
+    },
+    "CHC": {
+      "description": "船长。船体长度，不是船长人员；单位待确认。",
+      "entity_id": "ship",
+      "property_id": "length",
+      "semantic_type": "quantity",
+      "semantic_role": "measure",
+      "synonyms": [
+        "船体长度"
+      ]
+    },
+    "CHK": {
+      "description": "船宽。船体宽度；单位待确认。",
+      "entity_id": "ship",
+      "property_id": "width",
+      "semantic_type": "quantity",
+      "semantic_role": "measure",
+      "synonyms": [
+        "船体宽度"
+      ]
+    },
+    "ZONGD": {
+      "description": "总吨。总吨；业务计量口径待确认，不自动等同货物重量。",
+      "entity_id": "ship",
+      "property_id": "gross_tonnage",
+      "semantic_type": "quantity",
+      "semantic_role": "measure",
+      "synonyms": [
+        "总吨位",
+        "总吨"
+      ]
+    },
+    "JD": {
+      "description": "净吨。净吨；业务计量口径待确认。",
+      "entity_id": "ship",
+      "property_id": "net_tonnage",
+      "semantic_type": "quantity",
+      "semantic_role": "measure",
+      "synonyms": [
+        "净吨位",
+        "净吨"
+      ]
+    },
+    "ZD": {
+      "description": "载重吨。船舶载重吨；单位和计量口径待确认。",
+      "entity_id": "ship",
+      "property_id": "deadweight_tonnage",
+      "semantic_type": "quantity",
+      "semantic_role": "measure",
+      "synonyms": [
+        "载重吨",
+        "DWT"
+      ]
+    },
+    "CHX": {
+      "description": "船型（待确认）。存在冲突：页面名称为船舶等级，来源描述为船型；确认前不解释为船舶等级。",
+      "entity_id": "ship",
+      "property_id": "vessel_type_unconfirmed",
+      "semantic_type": "code",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "船舶等级",
+        "船型"
+      ]
+    },
+    "CX": {
+      "description": "舱型。舱型；代码含义待确认。",
+      "entity_id": "ship",
+      "property_id": "hold_type",
+      "semantic_type": "code",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "船舱类型"
+      ]
+    },
+    "CS": {
+      "description": "舱数。舱的数量；是否包含特殊舱待确认。",
+      "entity_id": "ship",
+      "property_id": "hold_count",
+      "semantic_type": "integer",
+      "semantic_role": "measure",
+      "synonyms": [
+        "舱室数量"
+      ]
+    },
+    "CHSH": {
+      "description": "前吃水（待确认）。存在冲突：页面名称为空载吃水，来源描述为前吃水；空载状态与船艏位置不同，需确认。",
+      "entity_id": "ship",
+      "property_id": "forward_draft_unconfirmed",
+      "semantic_type": "quantity",
+      "semantic_role": "measure",
+      "synonyms": [
+        "空载吃水",
+        "前吃水"
+      ]
+    },
+    "HCHSH": {
+      "description": "后吃水（待确认）。存在冲突：页面名称为满载吃水，来源描述为后吃水；满载状态与船艉位置不同，需确认。",
+      "entity_id": "ship",
+      "property_id": "aft_draft_unconfirmed",
+      "semantic_type": "quantity",
+      "semantic_role": "measure",
+      "synonyms": [
+        "满载吃水",
+        "后吃水"
+      ]
+    },
+    "YSHQ": {
+      "description": "引水桥距船尾。引水桥到船尾的距离；单位待确认。",
+      "entity_id": "ship",
+      "property_id": "pilot_station_to_stern",
+      "semantic_type": "quantity",
+      "semantic_role": "measure",
+      "synonyms": [
+        "引水桥距离"
+      ]
+    },
+    "BZH": {
+      "description": "备注。业务备注，自由文本。",
+      "entity_id": "voyage_declaration",
+      "property_id": "remarks",
+      "semantic_type": "text",
+      "semantic_role": "descriptive",
+      "synonyms": [
+        "备注"
+      ]
+    },
+    "ZHXLB": {
+      "description": "装卸类别。页面称装卸工艺，来源描述为装卸类别；装船、卸船对应的真实代码待确认，不编造0/1。",
+      "entity_id": "voyage_declaration",
+      "property_id": "handling_category",
+      "semantic_type": "code",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "装卸工艺",
+        "装卸类别"
+      ]
+    },
+    "MB": {
+      "description": "贸别。贸易性质或贸别；枚举编码待确认。",
+      "entity_id": "voyage_declaration",
+      "property_id": "trade_type",
+      "semantic_type": "code",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "贸易性质",
+        "贸别"
+      ]
+    },
+    "CHFSHJ": {
+      "description": "出发时间。出发时间；对应哪一港、计划还是实际待确认。",
+      "entity_id": "voyage_declaration",
+      "property_id": "departure_at_unconfirmed",
+      "semantic_type": "datetime",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "出发时刻"
+      ]
+    },
+    "JKQCHSH": {
+      "description": "抵港船艏吃水。进口前吃水；单位待确认。",
+      "entity_id": "voyage_declaration",
+      "property_id": "arrival_forward_draft",
+      "semantic_type": "quantity",
+      "semantic_role": "measure",
+      "synonyms": [
+        "进口吃水前"
+      ]
+    },
+    "JKZHCHSH": {
+      "description": "抵港船舯吃水。进口中吃水；单位待确认。",
+      "entity_id": "voyage_declaration",
+      "property_id": "arrival_mid_draft",
+      "semantic_type": "quantity",
+      "semantic_role": "measure",
+      "synonyms": [
+        "进口中吃水"
+      ]
+    },
+    "JKHCHSH": {
+      "description": "抵港船艉吃水。进口后吃水；单位待确认。",
+      "entity_id": "voyage_declaration",
+      "property_id": "arrival_aft_draft",
+      "semantic_type": "quantity",
+      "semantic_role": "measure",
+      "synonyms": [
+        "进口吃水后"
+      ]
+    },
+    "CKQCHSH": {
+      "description": "离泊船艏吃水。出口前吃水；单位待确认。",
+      "entity_id": "voyage_declaration",
+      "property_id": "departure_forward_draft",
+      "semantic_type": "quantity",
+      "semantic_role": "measure",
+      "synonyms": [
+        "出口吃水前"
+      ]
+    },
+    "CKZHCHSH": {
+      "description": "离泊船舯吃水。出口中吃水；单位待确认。",
+      "entity_id": "voyage_declaration",
+      "property_id": "departure_mid_draft",
+      "semantic_type": "quantity",
+      "semantic_role": "measure",
+      "synonyms": [
+        "出口中吃水"
+      ]
+    },
+    "CKHCHSH": {
+      "description": "离泊船艉吃水。出口后吃水；单位待确认。",
+      "entity_id": "voyage_declaration",
+      "property_id": "departure_aft_draft",
+      "semantic_type": "quantity",
+      "semantic_role": "measure",
+      "synonyms": [
+        "出口吃水后"
+      ]
+    },
+    "TL": {
+      "description": "靠泊是否需要拖轮。靠泊是否需要拖轮；真实枚举值待确认。",
+      "entity_id": "voyage_declaration",
+      "property_id": "requires_tug_berthing",
+      "semantic_type": "boolean",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "靠泊拖轮"
+      ]
+    },
+    "LBTL": {
+      "description": "离泊是否使用拖轮。离泊是否使用拖轮；真实枚举值待确认。",
+      "entity_id": "voyage_declaration",
+      "property_id": "requires_tug_unberthing",
+      "semantic_type": "boolean",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "离泊拖轮"
+      ]
+    },
+    "QYXZ": {
+      "description": "初始审核部门。初始审核部门；是否为部门代码待确认。",
+      "entity_id": "voyage_declaration",
+      "property_id": "review_department",
+      "semantic_type": "code",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "审核部门"
+      ]
+    },
+    "LRRY": {
+      "description": "录入人（待确认）。页面称船方代理，来源描述为录入人；是否实际代理及关联人员表待确认。",
+      "entity_id": "voyage_declaration",
+      "property_id": "submitter_unconfirmed",
+      "semantic_type": "text",
+      "semantic_role": "descriptive",
+      "synonyms": [
+        "录入人",
+        "船方代理"
+      ]
+    },
+    "CKZH": {
+      "description": "出口载货量。装船场景的配载取此字段；计量单位和统计口径待确认。",
+      "entity_id": "voyage_declaration",
+      "property_id": "export_cargo_quantity",
+      "semantic_type": "quantity",
+      "semantic_role": "measure",
+      "synonyms": [
+        "出口载货",
+        "装船配载"
+      ]
+    },
+    "JKZH": {
+      "description": "进口载货量。卸船场景的配载取此字段；计量单位和统计口径待确认。",
+      "entity_id": "voyage_declaration",
+      "property_id": "import_cargo_quantity",
+      "semantic_type": "quantity",
+      "semantic_role": "measure",
+      "synonyms": [
+        "进口载货",
+        "卸船配载"
+      ]
+    },
+    "CKZHXLX": {
+      "description": "出口装卸类型。装船场景的载货方式取此字段；代码待确认。",
+      "entity_id": "voyage_declaration",
+      "property_id": "export_handling_type",
+      "semantic_type": "code",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "出口装卸类型"
+      ]
+    },
+    "JKZHXLX": {
+      "description": "进口装卸类型。卸船场景的载货方式取此字段；代码待确认。",
+      "entity_id": "voyage_declaration",
+      "property_id": "import_handling_type",
+      "semantic_type": "code",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "进口装卸类型"
+      ]
+    },
+    "CKHWMCH": {
+      "description": "出口货物名称。装船场景的货物名称取此字段。",
+      "entity_id": "voyage_declaration",
+      "property_id": "export_cargo_name",
+      "semantic_type": "name",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "出口货物",
+        "装船货物"
+      ]
+    },
+    "JKHWMCH": {
+      "description": "进口货物名称。卸船场景的货物名称取此字段。",
+      "entity_id": "voyage_declaration",
+      "property_id": "import_cargo_name",
+      "semantic_type": "name",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "进口货物",
+        "卸船货物"
+      ]
+    },
+    "ZHJH": {
+      "description": "装计划。装船场景显示的计划量；单位待确认。",
+      "entity_id": "voyage_declaration",
+      "property_id": "loading_plan_quantity",
+      "semantic_type": "quantity",
+      "semantic_role": "measure",
+      "synonyms": [
+        "装计划"
+      ]
+    },
+    "XJH": {
+      "description": "卸计划。卸船场景显示的计划量；单位待确认。",
+      "entity_id": "voyage_declaration",
+      "property_id": "unloading_plan_quantity",
+      "semantic_type": "quantity",
+      "semantic_role": "measure",
+      "synonyms": [
+        "卸计划"
+      ]
+    },
+    "JZSGDM": {
+      "description": "进口上一港代码。卸船场景上一港；清单注明关联ZKTOS.ct_gkdm.DM，目标键约束、港口名称字段及关联角色尚未确认。",
+      "entity_id": "voyage_declaration",
+      "property_id": "import_previous_port_code",
+      "semantic_type": "code",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "进口上一港"
+      ]
+    },
+    "JZXGDM": {
+      "description": "进口下一港代码。卸船场景下一港；对应港口字典关联待核验。",
+      "entity_id": "voyage_declaration",
+      "property_id": "import_next_port_code",
+      "semantic_type": "code",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "进口下一港"
+      ]
+    },
+    "JAZSGDM": {
+      "description": "出口上一港代码。装船场景上一港；对应港口字典关联待核验。",
+      "entity_id": "voyage_declaration",
+      "property_id": "export_previous_port_code",
+      "semantic_type": "code",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "出口上一港"
+      ]
+    },
+    "JAZXGDM": {
+      "description": "出口下一港代码。装船场景下一港；对应港口字典关联待核验。",
+      "entity_id": "voyage_declaration",
+      "property_id": "export_next_port_code",
+      "semantic_type": "code",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "出口下一港"
+      ]
+    }
+  },
+  "entity_id": "voyage_declaration"
+}

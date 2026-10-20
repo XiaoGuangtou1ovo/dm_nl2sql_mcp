@@ -1,0 +1,102 @@
+{
+  "name": "舱单货物明细",
+  "description": "货种、货主、提单和配载相关记录。已按KHFW.BT_CHBHW_DD元数据核验所列字段、基本类型和主键，保留真实字段大小写；统计粒度、单位及与主表关联方式仍待业务确认。",
+  "fields": {
+    "ID": {
+      "description": "舱单货物明细记录主键。从达梦元数据确认的本表记录主键；与其他表同名ID不代表存在关联。",
+      "entity_id": "cargo_manifest_item",
+      "property_id": "record_id",
+      "semantic_type": "identifier",
+      "semantic_role": "identifier",
+      "synonyms": [
+        "舱单明细主键"
+      ]
+    },
+    "HWMCH": {
+      "description": "货物名称。页面称货种，来源描述为货物名称；是否标准货种字典待确认。",
+      "entity_id": "cargo_manifest_item",
+      "property_id": "cargo_name",
+      "semantic_type": "name",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "货种",
+        "货物名称"
+      ]
+    },
+    "HZH": {
+      "description": "货主。货主名称或代码；表示方式待确认。",
+      "entity_id": "cargo_manifest_item",
+      "property_id": "cargo_owner",
+      "semantic_type": "name",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "货主"
+      ]
+    },
+    "SHD": {
+      "description": "湿度或含水率（待确认）。页面称含水率，来源称湿度；物理类型是字符串，单位与换算规则待确认，不直接做数值统计。",
+      "entity_id": "cargo_manifest_item",
+      "property_id": "moisture_content_unconfirmed",
+      "semantic_type": "text",
+      "semantic_role": "descriptive",
+      "synonyms": [
+        "湿度",
+        "含水率"
+      ]
+    },
+    "TDH": {
+      "description": "提单号。提单编号；是否一张提单对应多条舱位明细待确认，不直接作为主键。",
+      "entity_id": "cargo_manifest_item",
+      "property_id": "bill_of_lading_number",
+      "semantic_type": "identifier",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "提单号",
+        "提单编号"
+      ]
+    },
+    "ZHLSH": {
+      "description": "提单重量数。页面称提单量，来源为重量数；计量单位和去重口径待确认。",
+      "entity_id": "cargo_manifest_item",
+      "property_id": "bill_of_lading_weight",
+      "semantic_type": "quantity",
+      "semantic_role": "measure",
+      "synonyms": [
+        "提单量",
+        "重量数"
+      ]
+    },
+    "hzzb": {
+      "description": "货种组别。原清单物理名称为小写hzzb；需实库确认大小写及组别代码。",
+      "entity_id": "cargo_manifest_item",
+      "property_id": "cargo_group",
+      "semantic_type": "code",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "货种组别"
+      ]
+    },
+    "zhcw": {
+      "description": "装货舱位。原清单物理名称为小写zhcw；来源称装货仓位，需实库核验。",
+      "entity_id": "cargo_manifest_item",
+      "property_id": "loading_slot",
+      "semantic_type": "code",
+      "semantic_role": "dimension",
+      "synonyms": [
+        "装货仓位"
+      ]
+    },
+    "pz": {
+      "description": "配载（待确认）。页面称舱重量，来源称配载；物理类型是字符串，不直接SUM，需明确格式、单位与真实含义。",
+      "entity_id": "cargo_manifest_item",
+      "property_id": "loading_weight_unconfirmed",
+      "semantic_type": "text",
+      "semantic_role": "descriptive",
+      "synonyms": [
+        "舱重量",
+        "配载"
+      ]
+    }
+  },
+  "entity_id": "cargo_manifest_item"
+}
